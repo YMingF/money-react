@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Link, Redirect
@@ -33,11 +33,11 @@ function App() {
           <Route path="/statistics">
             <Statistics />
           </Route>
+          <Redirect exact from="/" to="/money" />
           {/*先对前面的路径进行匹配，除了上面这些路径之外，剩下的所有其它路径，都显示为找不到内容。*/}
           <Route path="*">
             <NoMatch />
           </Route>
-          <Redirect exact from="/" to="/money" />
         </Switch>
       </div>
     </Router>
