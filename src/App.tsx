@@ -6,24 +6,11 @@ import {
   // eslint-disable-next-line
   Link, Redirect
 } from 'react-router-dom';
-import styled from 'styled-components';
-import  Nav from 'components/Nav'
-const Wrapper=styled.div`
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-   
-`
-const Main=styled.div`
-    flex-grow: 1;
-    overflow: auto;
-`
+import Layout from 'components/Layout';
 
 function App() {
   return (
     <Router>
-      <Wrapper>
-        <Main>
           <Switch>
           <Route path="/tags">
             <Tags />
@@ -40,23 +27,33 @@ function App() {
             <NoMatch />
           </Route>
         </Switch>
-        </Main>
-        <Nav />
-      </Wrapper>
     </Router>
   );
 }
 
 function Statistics() {
-  return <h2>Statistics</h2>;
+  return (
+    <Layout>
+      <h2>统计页面</h2>
+    </Layout>
+  )
 }
 
 function Tags() {
-  return <h2>Tags</h2>;
+  return (
+    <Layout>
+      <h2>标签页面</h2>
+    </Layout>
+
+);
 }
 
 function Money() {
-  return <h2>Money</h2>;
+  return (
+    <Layout>
+      <h2>Money</h2>;
+    </Layout>
+  )
 }
 function NoMatch() {
   return <h2>该路径找不到，页面不存在</h2>;
