@@ -27,3 +27,9 @@ button{
 :focus{
   outline: none;
 }
+//清除浮动
+.clearFix::after{
+  content:"";
+  display: block;
+  clear: both;
+}
