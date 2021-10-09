@@ -6,6 +6,11 @@ import styled from 'styled-components';
 const TagsSection=styled.section`
   background: #FFFFFF;
   padding: 12px 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; //让标签尽量靠下
+  align-items: flex-start; //让新建标签靠左
   >ol{
     margin: 0 -12px;
     >li{
@@ -63,7 +68,6 @@ const CategorySection=styled.section`
     }
   }
 `
-
 const NumberPadSection=styled.section`
     display: flex;
   flex-direction: column;
@@ -117,10 +121,15 @@ const NumberPadSection=styled.section`
   }
 `
 
+const MyLayout=styled(Layout)`
+  display: flex;
+  flex-direction: column;
+`
+
 function Money() {
   return (
-    <Layout>
-        <TagsSection >
+    <MyLayout>
+      <TagsSection >
           <ol>
             <li>衣</li>
             <li>食</li>
@@ -160,7 +169,7 @@ function Money() {
           <button>.</button>
         </div>
       </NumberPadSection>
-    </Layout>
+    </MyLayout>
   )
 }
 

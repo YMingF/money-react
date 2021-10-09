@@ -13,7 +13,7 @@ const Main=styled.div`
 const Layout=(props:any)=>{
     return (
       <Wrapper>
-        <Main>
+        <Main className={props.className}>
           {/*//传入的子内容*/}
           {props.children}
         </Main>
