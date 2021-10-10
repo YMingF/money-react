@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import React from 'react';
-
+import React, {useState} from 'react';
 
 const Wrapper=styled.section`
   background: #FFFFFF;
@@ -19,6 +18,10 @@ const Wrapper=styled.section`
       padding: 3px 18px;
       font-size: 14px;
       margin:8px 12px; //让标签的左右两边各12px所以两个标签间就间隔24px
+      &.selected{
+        background-color: #333;
+        color:white;
+      }
     }
   }
   >button{
@@ -30,15 +33,38 @@ const Wrapper=styled.section`
 
 
 const TagsSection:React.FC=()=>{
+
+  const [tags,setTags]=useState<string[]>(['衣','食', '住','行'])
+  const [selectedTags,setSelectedTags]=useState<string[]>([])
+  const onAddTag=()=>{
+     const tagName=window.prompt('新标签的名称为：')
+    if(tagName!==null){
+        setTags([...tags,tagName])
+      }
+  }
+  const onToggleTag=(tag:string)=>{
+      const index=selectedTags.indexOf(tag)
+      if(index>=0){
+        setSelectedTags(selectedTags.filter(t=>t!==tag))
+        //如果tag已被选中，就复制所有没被选中的tag 作为新的selectedTags
+      }else{
+        setSelectedTags([...selectedTags,tag])
+        //在之前的基础上新加一个tag进去
+      }
+  }
+  const getClass=(tag:string)=>selectedTags.indexOf(tag)>=0?'selected':''
   return (
     <Wrapper>
       <ol>
-        <li>衣</li>
-        <li>食</li>
-        <li>住</li>
-        <li>行</li>
+        {tags.map(tag=>
+          <li key={tag} onClick={
+            ()=>{onToggleTag(tag)}
+          } className={getClass(tag)}
+          >{tag}</li>
+        )}
+
       </ol>
-      <button>新增标签</button>
+      <button onClick={onAddTag}>新增标签</button>
     </Wrapper>
   )
 }
