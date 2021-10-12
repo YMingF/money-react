@@ -8,7 +8,8 @@ const defaultTags=[
 ]
 const useTags=()=>{//封装自定义Hook
   const [tags,setTags]=useState<{id:number;name:string}[]>(defaultTags)
-  return {  tags:tags,setTags:setTags  } //只能返回对象，而非数组，否则会报错.
+  const findTag=(id:number)=>tags.filter(tag=>tag.id===id)[0]
+  return { tags:tags,setTags:setTags,findTag:findTag  } //只能返回对象，而非数组，否则会报错.
 }
 
 export  {useTags}
