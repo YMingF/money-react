@@ -7,12 +7,13 @@ try {importAll(require.context('icons', true, /\.svg$/));} catch (error) {consol
 
 
 type Props={
-  name:string
+  name?:string
 }
 const Icon=(props:Props)=>{
   return (
     <svg className="icon">
-      <use xlinkHref={'#'+props.name} />
+
+      {props.name && <use xlinkHref={'#'+props.name} />}   {/*你传了name再去使用svg*/}
     </svg>
   )
 }
