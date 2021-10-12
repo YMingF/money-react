@@ -4,6 +4,7 @@ import {useTags} from '../useTags';
 import styled from 'styled-components';
 import Icon from '../components/icon';
 import { Link } from 'react-router-dom';
+import { Button } from 'components/Button';
 const TagList=styled.ol`
   font-size: 16px;
   background-color: white;
@@ -17,11 +18,6 @@ const TagList=styled.ol`
       align-items: center;
     }
   }
-`
-const Button=styled.button`
-    font-size: 18px; border: none; padding: 8px 13px;
-    background-color: #767676; border-radius: 4px; color: white;
-
 `
 //让按钮居中
 const Center=styled.div`
