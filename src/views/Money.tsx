@@ -20,43 +20,23 @@ function Money() {
     category:'-' as Category,
     amount:0
   })
+  //Partial表示<>里类型的部分类型
+  const onChange=(obj:Partial<typeof selected>)=>{
+    setSelected({...selected,...obj })
+  }
   return (
     <MyLayout>
-      {selected.tags}
-      <hr/>
-      {selected.note}
-      <hr/>
-      {selected.category}
-      <hr/>
-      {selected.amount}
       <TagsSection value={selected.tags}
-                   onChange={(tags)=>setSelected({
-                     ...selected,//先把之前的值拷贝过来
-                     tags:tags //然后再专门设置tags的值
-                   })}
+                   onChange={tags=>onChange({tags:tags})}
       />
       <NoteSection value={selected.note}
-                   onChange={(note)=>{
-                     setSelected({
-                       ...selected,
-                       note:note
-                     })
-                   }}
+                   onChange={note=>onChange({note:note})}
         />
       <CategorySection value={selected.category}
-                       onChange={(category)=>{
-                         setSelected({
-                           ...selected,
-                           category:category
-                         })
-                       }}/>
+                       onChange={category=>onChange({category:category})
+                       }/>
       <NumberPadSection value={selected.amount}
-                        onChange={(amount)=>{
-                          setSelected({
-                            ...selected,
-                            amount:amount
-                          })
-                        }}
+                        onChange={amount=>onChange({amount:amount})}
                         onOk={()=>{}} //这里在定义我们点击OK时的操作
       />
     </MyLayout>
