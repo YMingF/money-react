@@ -36,16 +36,16 @@ function Money() {
   return (
     <MyLayout>
       <TagsSection value={selected.tagIds}
-                   onChange={tagIds=>onChange({tagIds:tagIds})}
+                   onChange={tagIds=>onChange({tagIds})}
       />
       <NoteSection value={selected.note}
-                   onChange={note=>onChange({note:note})}
+                   onChange={note=>onChange({note})}
         />
       <CategorySection value={selected.category}
-                       onChange={category=>onChange({category:category})
+                       onChange={category=>onChange({category})
                        }/>
       <NumberPadSection value={selected.amount}
-                        onChange={amount=>onChange({amount:amount})}
+                        onChange={amount=>onChange({amount})}
                         onOk={submit} //这里在定义我们点击OK时的操作
       />
     </MyLayout>
