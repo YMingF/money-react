@@ -45,7 +45,11 @@ const useTags=()=>{//封装自定义Hook
       setTags([...tags, {id:createId(),name:tagName}])
     }
   }
-  return { tags,setTags,findTag,updateTag,findTagIndex,deleteTag,addTag  } //只能返回对象，而非数组，否则会报错.
+  const getName=(id:number)=>{
+    const tag=tags.filter(t=>t.id===id)[0]
+    return tag?tag.name:''
+  }
+  return { tags,getName,setTags,findTag,updateTag,findTagIndex,deleteTag,addTag  } //只能返回对象，而非数组，否则会报错.
 }
 
 export  {useTags}

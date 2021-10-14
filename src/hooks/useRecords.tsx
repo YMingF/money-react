@@ -6,7 +6,7 @@ type RecordItem={
   note:string,
   category:'+'|'-',
   amount:number
-  createdAt?:string
+  createdAt:string
 }
 type newRecordItem=Omit<RecordItem, 'createdAt'> //忽略RecordItem的createdAt这个属性
 
