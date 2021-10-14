@@ -8,6 +8,19 @@ import  day from 'dayjs'
 const CategoryWrapper=styled.div`
       background-color: white;
 `
+const Item=styled.div`
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    font-size: 18px;
+    line-height: 20px;
+    padding:10px 16px;
+    >.note{
+      margin-right: auto;
+      margin-left: 16px;
+      color: #999;
+    }
+`
 function Statistics() {
   const [category,setCategory]=useState<'-'|'+'>('-')
   const {records}=useRecords()
@@ -20,12 +33,19 @@ function Statistics() {
 
       <div>
         {records.map(r=>{
-          return <div>
-            {r.tagIds.map(tagId=><span>{getName(tagId)}</span>)}
-            {r.amount}
-            <hr/>
-            {day(r.createdAt).format('YYYY-MM-DD')}
-          </div>
+          return <Item>
+            <div className="tags">
+              {r.tagIds.map(tagId=><span>{getName(tagId)}</span>)}
+            </div>
+            {r.note&&<div className="note">
+                {r.note}
+              </div>
+            }
+            <div className="amount">
+              ￥{r.amount}
+            </div>
+            {/*{day(r.createdAt).format('YYYY-MM-DD')}*/}
+          </Item>
         })}
       </div>
 
