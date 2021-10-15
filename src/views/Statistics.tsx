@@ -33,7 +33,7 @@ function Statistics() {
   const {getName}=useTags()
   const hash:{[K:string]:RecordItem[]}={}
   const selectedRecords=records.filter(r=>r.category===category) //得到和我当前选中类型相同的所有数据
-  selectedRecords.map(r=>{
+  selectedRecords.forEach(r=>{
     const key=day(r.createdAt).format('YYYY年-MM月-DD日')
     if (!(key in hash)){
       hash[key]=[]
